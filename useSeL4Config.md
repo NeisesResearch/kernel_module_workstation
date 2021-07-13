@@ -38,7 +38,7 @@ with this line:
 ```
 AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/newLinux")
 ```
-7. add the config and symbols files to the camkes build path
+7. from the kernel build directory, add the config and symbols files to the camkes build path
 ```
 mkdir -p [...]/projects/camkes-vm-linux/linux-configs/4.9.y/64
 cp .config [...]/projects/camkes-vm-linux/linux-configs/4.9.y/64/config
