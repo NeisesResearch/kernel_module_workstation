@@ -20,10 +20,22 @@ cp .../projects/camkes-vm-images/qemu-arm-virt/linux_configs/Module.symvers ./Mo
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- prepare
 ```
 
-5. build linux kernel
+4. build linux kernel
 ```
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
 ```
 
-This results in a file called "vmlinux", which is the uncompressed kernel. I'm not sure whether this is useful to us, or if we need a compressed version, like a bzImage, for instance. However, `make bzImage` is not valid for this architecture.
+5. add the newly built kernel to the camkes build path
+```
+cp arch/arm64/boot/Image [...]/projects/camkes-vm-images/qemu-arm-virt/newLinux
+```
+
+6. edit your cmakelists.txt to use the new kernel by replacing this line:
+```
+AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/linux
+```
+with this line:
+```
+AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/newLinux
+```
 
