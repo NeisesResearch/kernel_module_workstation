@@ -38,4 +38,12 @@ with this line:
 ```
 AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/newLinux")
 ```
+7. add the config and symbols files to the camkes build path
+```
+mkdir -p [...]/projects/camkes-vm-linux/linux-configs/4.9.y/64
+cp .config [...]/projects/camkes-vm-linux/linux-configs/4.9.y/64/config
+cp Module.symvers [...]/projects/camkes-vm-linux/linux-configs/4.9.y/64/Module.symvers
+```
+
+8. update CMakeLists.txt to build the module using the new kernel sources
 
