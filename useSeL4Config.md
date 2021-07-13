@@ -32,10 +32,10 @@ cp arch/arm64/boot/Image [...]/projects/camkes-vm-images/qemu-arm-virt/newLinux
 
 6. edit your cmakelists.txt to use the new kernel by replacing this line:
 ```
-AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/linux
+AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/linux")
 ```
 with this line:
 ```
-AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/newLinux
+AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/newLinux")
 ```
 
