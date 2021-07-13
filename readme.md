@@ -1,6 +1,4 @@
-# Compiling Kernel Modules
-### for seL4's Linux VM using qemu-arm-virt
-### from Debian 10
+# Cross-Compiling Kernel Modules for use with seL4's Linux VM using qemu-arm-virt from Debian 10
 
 1. download linux kernel repo
 ```
