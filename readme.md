@@ -8,5 +8,5 @@ Just run the provided scripts in the provided order.
 
 > Where can I see all the steps in one place?
 
-Right [here](github.com/NeisesResearch/vm_measure/wiki/seL4Config).
+Right [here](https://github.com/NeisesResearch/vm_measure/wiki/seL4Config).
 
