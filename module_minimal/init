@@ -1,0 +1,2 @@
+#!/bin/sh
+insmod /lib/modules/4.9.275/kernel/drivers/vmm/hello.ko
