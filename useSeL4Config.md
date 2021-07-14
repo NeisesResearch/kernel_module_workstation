@@ -12,7 +12,6 @@ git fetch
 ```
 make clean
 cp .../projects/camkes-vm-images/qemu-arm-virt/linux_configs/config ./.config
-cp .../projects/camkes-vm-images/qemu-arm-virt/linux_configs/Module.symvers ./Module.symvers
 ```
 
 3. prepare kernel for cross-compilation, choosing default config options always
@@ -91,4 +90,16 @@ AddOverlayDirToRootfs(
 )
 
 AddToFileServer("linux-initrd" ${output_overlayed_rootfs_location} DEPENDS rootfs_target)
+```
+
+9. Ensure the module Makefile is configured for cross compilation
+```
+obj-m += hello.o
+
+all:
+	make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -C $(KHEAD) M=$(PWD) modules
+
+clean:
+	make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -C $(KHEAD) M=$(PWD) clean
+
 ```
