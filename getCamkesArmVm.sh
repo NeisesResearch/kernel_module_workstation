@@ -13,19 +13,19 @@ repo sync &&
 echo "==================================" &&
 echo "Repo grabbed!" &&
 echo "Copy module_minimal into the project..." &&
-echo "=================================="
+echo "==================================" &&
 cp -r ../module_minimal projects/vm-examples/apps/Arm/ &&
-echo "=================================="
+echo "==================================" &&
 echo "module_minimal copied!" &&
 mkdir build &&
 cd build &&   
 echo "Copy scripts into the build directory..." &&
-echo "=================================="
+echo "==================================" &&
 cp ../../buildScripts/* . &&
-echo "=================================="
+echo "==================================" &&
 echo "Copied!" &&
 echo "Clone the Linux kernel and checkout the latest 4.9.y version..." &&
-echo "=================================="
+echo "==================================" &&
 git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git &&
 cd linux-stable &&
 git checkout linux-4.9.y &&
