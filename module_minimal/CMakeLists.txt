@@ -1,4 +1,3 @@
-
 #
 # Copyright 2018, Data61, CSIRO (ABN 41 687 119 230)
 #
@@ -7,17 +6,14 @@
 
 cmake_minimum_required(VERSION 3.8.2)
 
-project(module_minimal C)
+project(module-minimal C)
 
 include(${CAMKES_ARM_VM_HELPERS_PATH})
-include(${CAMKES_VM_LINUX_HELPERS_PATH})
-include(${CAMKES_VM_LINUX_SOURCE_HELPERS_PATH})
-include(${CAMKES_VM_LINUX_MODULE_HELPERS_PATH})
-include(ExternalProject)
-include(external-project-helpers)
-find_package(camkes-vm-linux REQUIRED)
-set(cpp_flags "-DKERNELARMPLATFORM_QEMU-ARM-VIRT")
 
+# Create our CPP Flags based on ARM VM config variables
+find_package(camkes-vm-linux REQUIRED)
+include(${CAMKES_VM_LINUX_HELPERS_PATH})
+set(cpp_flags "-DKERNELARMPLATFORM_QEMU-ARM-VIRT")
 
 # Add our custom linux kernel
 AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/newLinux")
@@ -25,13 +21,24 @@ AddToFileServer("linux" "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/newLinux")
 # Grab the default rootfs
 set(rootfs_file "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/rootfs.cpio.gz")
 
+#===============================================================================
+# begin new
+#===============================================================================
+
+include(${CAMKES_VM_LINUX_SOURCE_HELPERS_PATH})
+include(${CAMKES_VM_LINUX_MODULE_HELPERS_PATH})
+include(ExternalProject)
+include(external-project-helpers)
+
 # Setup and configure linux sources
 set(linux_config "${CAMKES_VM_LINUX_DIR}/linux_configs/4.9.y/64/config")
 set(linux_symvers "${CAMKES_VM_LINUX_DIR}/linux_configs/4.9.y/64/Module.symvers")
 
 # Set the directory of our custom linux kernel
 set(linux_dir "/host/linux-stable")
-ConfigureLinux(${linux_dir} ${linux_config} ${linux_symvers} configure_vm_linux)
+
+# maybe don't configure linux, because we just compiled the whole damn kernel?
+#ConfigureLinux(${linux_dir} ${linux_config} ${linux_symvers} configure_vm_linux)
 
 # Add the external hello module project
 ExternalProject_Add(hello-module
@@ -41,7 +48,7 @@ ExternalProject_Add(hello-module
     STAMP_DIR ${CMAKE_CURRENT_BINARY_DIR}/hello-module-stamp
     EXCLUDE_FROM_ALL
     INSTALL_COMMAND ""
-    DEPENDS configure_vm_linux
+#    DEPENDS configure_vm_linux
     CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_TOOLCHAIN_FILE=${LINUX_64BIT_TOOLCHAIN}
@@ -71,6 +78,11 @@ AddOverlayDirToRootfs(
 # Add the newly built rootfs
 AddToFileServer("linux-initrd" ${output_overlayed_rootfs_location} DEPENDS rootfs_target)
 
+#===============================================================================
+# end new
+#===============================================================================
+
+#AddToFileServer("linux-initrd" ${rootfs_file})
 # Updated dtb based on initrd
 UpdateDtbFromInitrd(
     "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/linux-dtb"
@@ -80,7 +92,6 @@ UpdateDtbFromInitrd(
     output_dtb_location
 )
 AddToFileServer("linux-dtb" "${output_dtb_location}" DEPENDS dtb_gen_target)
-
 include(simulation)
 set(SIMULATION ON CACHE BOOL "Generate simulation script to run qemu with the proper arguments")
 if(SIMULATION)
@@ -95,7 +106,7 @@ CAmkESAddImportPath(${KernelARMPlatform})
 
 # Declare root server
 DeclareCAmkESRootserver(
-    vm_minimal.camkes
+    module_minimal.camkes
     CPP_FLAGS
     ${cpp_flags}
     CPP_INCLUDES
