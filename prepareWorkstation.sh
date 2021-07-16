@@ -26,7 +26,7 @@ echo "==================================" &&
 echo "Copied!" &&
 echo "Clone the Linux kernel and checkout the latest 4.9.y version..." &&
 echo "==================================" &&
-cd .. &&
+cd projects/camkes-vm-images/qemu-arm-virt &&
 
 git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git &&
 
@@ -45,7 +45,7 @@ echo "==================================" &&
 echo "Clean!" &&
 echo "Grab the Linux config used in the camkes-vm-images project..." &&
 echo "==================================" &&
-cp  ../${camkesdir}/projects/camkes-vm-images/qemu-arm-virt/linux_configs/config .config &&
+cp  ../linux_configs/config .config &&
 cp .config .config.old &&
 echo "==================================" &&
 echo "Found it!" &&
@@ -56,13 +56,14 @@ echo "==================================" &&
 echo "Prepared!" &&
 echo "Build the kernel. This will take a while." &&
 echo "==================================" &&
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- &&
+make -j$(nproc) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- &&
 echo "==================================" &&
 echo "All finished! Now let's copy the new kernel image into the camkes-vm-images project." &&
-cp arch/arm64/boot/Image ../${camkesdir}/projects/camkes-vm-images/qemu-arm-virt/newLinux &&
+cp arch/arm64/boot/Image ../newLinux &&
 echo "Copy away the config and Modules.symvers into the camkes-vm-linux project." &&
-mkdir -p ../${camkesdir}/projects/camkes-vm-linux/linux_configs/4.9.y/64 &&
-cp .config ../${camkesdir}/projects/camkes-vm-linux/linux_configs/4.9.y/64/config &&
-cp Module.symvers ../${camkesdir}/projects/camkes-vm-linux/linux_configs/4.9.y/64/Module.symvers &&
+mkdir ../../../camkes-vm-linux/linux_configs/4.9.y &&
+mkdir ../../../camkes-vm-linux/linux_configs/4.9.y/64 &&
+cp .config ../../../camkes-vm-linux/linux_configs/4.9.y/64/config &&
+cp Module.symvers ../../../camkes-vm-linux/linux_configs/4.9.y/64/Module.symvers &&
 echo "Okay, all done! Now you can enter your Docker instance and build the camkes project setup for you in camkes-arm-vm/build."
 

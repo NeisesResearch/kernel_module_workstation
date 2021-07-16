@@ -35,7 +35,8 @@ set(linux_config "${CAMKES_VM_LINUX_DIR}/linux_configs/4.9.y/64/config")
 set(linux_symvers "${CAMKES_VM_LINUX_DIR}/linux_configs/4.9.y/64/Module.symvers")
 
 # Set the directory of our custom linux kernel
-set(linux_dir "/host/linux-stable")
+#set(linux_dir "/host/linux-stable")
+set(linux_dir "${CAMKES_VM_IMAGES_DIR}/qemu-arm-virt/linux-stable")
 
 # maybe don't configure linux, because we just compiled the whole damn kernel?
 #ConfigureLinux(${linux_dir} ${linux_config} ${linux_symvers} configure_vm_linux)
