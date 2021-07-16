@@ -1,6 +1,6 @@
 What is this?
 
-> This is a workbench to support the creation of kernel modules for use with camkes-vm-linux.
+> This is a workbench to support the creation of linux kernel modules for use with camkes-vm-linux.
 
 Why would I want it?
 
@@ -15,7 +15,7 @@ Why would I want it?
 > At this time,
 > [prepareWorkstation.sh](https://github.com/NeisesResearch/kernel_module_workstation/blob/main/prepareWorkstation.sh)
 > automates most of the procedure. It requires some input when it prepares the
-> kernel for compilation, but at that time you can just hit Enter until you're
+> linux kernel for compilation, but at that time you can just hit Enter until you're
 > no longer needed.
 > After it succeeds, you have only to start your Docker instance.
 > Then enter the camkes-arm-vm/build directory and run the [buildModuleMinimal.sh](https://github.com/NeisesResearch/kernel_module_workstation/blob/main/buildScripts/buildModuleMinimal.sh) script.
