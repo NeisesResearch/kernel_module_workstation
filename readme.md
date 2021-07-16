@@ -31,8 +31,8 @@ Why would I want it?
 How long does it take?
 
 > It takes as long as it takes to download and compile the linux kernel.
-  I encourage you to edit the prepareWorkstation.sh script to compile the
-  linux kernel in a multi-threaded way, like so, where X is the number of threads:
+  I encourage you to edit the prepareWorkstation.sh script to compile the linux
+  kernel with a number of threads that works best for your system:
 ```
 make -jX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
 ```
