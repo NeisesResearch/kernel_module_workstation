@@ -2,6 +2,12 @@ What is this?
 
 > This is a workbench to support the creation of linux kernel modules for use with camkes-vm-linux.
 
+Who can use it?
+
+> I've tested this script using:
+> - WSL2 on Windows 10
+> - Debian 10 (pending)
+
 Why would I want it?
 
 > It automatically prepares and configures a camkes-vm app,
