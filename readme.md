@@ -24,6 +24,15 @@ Why is it important that I start the Docker instance with that /Host directory?
 
 > CMake needs to know [where to find your linux kernel](https://github.com/NeisesResearch/kernel_module_workstation/blob/8763310800f5fb09be0e7350f8bfd568052ec514/module_minimal/CMakeLists.txt#L38)
 
+How long does it take?
+
+> It takes as long as it takes to compile the linux kernel. I encourage you to
+> edit the prepareWorkstation.sh script to compile the linux kernel in a
+> multi-threaded way, like so, where X is the number of threads:
+```
+make -jX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
+```
+
 Where can I read the top-level procedure?
 
 > Right [here](https://github.com/NeisesResearch/kernel_module_workstation/wiki/seL4Config).
