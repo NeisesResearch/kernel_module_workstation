@@ -4,7 +4,11 @@ What is this?
 
  How do I use it?
 
-> At this time, [prepareWorkstation.sh](https://github.com/NeisesResearch/kernel_module_workstation/blob/main/prepareWorkstation.sh) automates the whole procedure.
+> At this time,
+> [prepareWorkstation.sh](https://github.com/NeisesResearch/kernel_module_workstation/blob/main/prepareWorkstation.sh)
+> automates most of the procedure. It requires some input when it prepares the
+> kernel for compilation, but at that time you can just hit Enter until you're
+> no longer needed.
 > After it succeeds, you have only to start your Docker instance with this repo as the /Host directory.
 > Then enter the camkes-arm-vm/build directory and run the [buildModuleMinimal.sh](https://github.com/NeisesResearch/kernel_module_workstation/blob/main/buildScripts/buildModuleMinimal.sh) script.
 
