@@ -25,6 +25,8 @@ Why would I want it?
 > no longer needed.
 > After it succeeds, you have only to start your Docker instance.
 > Then enter the camkes-arm-vm/build directory and run the [buildModuleMinimal.sh](https://github.com/NeisesResearch/kernel_module_workstation/blob/main/buildScripts/buildModuleMinimal.sh) script.
+> This will generate the ./simulate script, which will boot the kernel.
+> Once logged into the linux system, use `insmod /lib/modules/...` to load the module.
 
 How long does it take?
 
