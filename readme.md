@@ -4,9 +4,9 @@ What is this?
 
 Who can use it?
 
-> I've tested this script using:
-> - WSL2 on Windows 10
-> - Debian 10 (pending)
+> This script was tested to succeed on:
+> - WSL2 for Windows 10
+> - Debian 10
 
 Why would I want it?
 
