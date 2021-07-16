@@ -2,6 +2,14 @@ What is this?
 
 > This is a workbench to support the creation of kernel modules for use with camkes-vm-linux.
 
+Why would I want it?
+
+> It automatically prepares and configures a camkes-vm app,
+> ready for simulation after just a few steps,
+> which includes a linux kernel module built as part of the seL4 build process.
+> If you want to write linux kernel modules to use with camkes-arm-vm,
+> this workstation will make it easier for you.
+
  How do I use it?
 
 > At this time,
