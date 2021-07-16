@@ -26,9 +26,9 @@ Why is it important that I start the Docker instance with that /Host directory?
 
 How long does it take?
 
-> It takes as long as it takes to compile the linux kernel. I encourage you to
-> edit the prepareWorkstation.sh script to compile the linux kernel in a
-> multi-threaded way, like so, where X is the number of threads:
+> It takes as long as it takes to download and compile the linux kernel.
+  I encourage you to edit the prepareWorkstation.sh script to compile the
+  linux kernel in a multi-threaded way, like so, where X is the number of threads:
 ```
 make -jX ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
 ```
