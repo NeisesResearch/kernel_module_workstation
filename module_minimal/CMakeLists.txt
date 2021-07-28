@@ -56,17 +56,17 @@ AddExternalProjFilesToOverlay(
     hello-module
     ${CMAKE_CURRENT_BINARY_DIR}/hello-module
     vm-overlay
-    "lib/modules/4.9.275/kernel/drivers/vmm
+    "lib/modules/4.9.275/kernel/drivers/vmm"
     FILES
     hello.ko
 )
 
 # Add our module's init script- just an insmod call
-AddFileToOverlayDir( 
-    "init" 
-    ${CMAKE_CURRENT_SOURCE_DIR}/init 
-    "/etc/init.d" 
-    vm-overlay 
+AddFileToOverlayDir(
+    "init"
+    ${CMAKE_CURRENT_SOURCE_DIR}/init
+    "/etc/init.d"
+    vm-overlay
 )
 
 # Generate overlayed rootfs
@@ -81,7 +81,12 @@ AddOverlayDirToRootfs(
 )
 
 # Add the newly built rootfs
-AddToFileServer("linux-initrd" ${output_overlayed_rootfs_location} DEPENDS rootfs_target)
+AddToFileServer(
+    "linux-initrd"
+    ${output_overlayed_rootfs_location}
+    DEPENDS
+    rootfs_target
+)
 
 # Updated dtb based on initrd
 UpdateDtbFromInitrd(
