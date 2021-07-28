@@ -2,8 +2,7 @@ What is this?
 
 > This is a workbench to support the creation of linux kernel modules for use with camkes-vm-linux.
 
-Who can use it?
-
+On what operating systems does this work?
 > This script was tested to succeed on:
 > - WSL2 for Windows 10
 > - Debian 10
