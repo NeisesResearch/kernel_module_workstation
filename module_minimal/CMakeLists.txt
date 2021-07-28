@@ -62,22 +62,22 @@ AddExternalProjFilesToOverlay(
 )
 
 # Add our module's init script- just an insmod call
-AddFileToOverlayDir(
-    "init"
-    ${CMAKE_CURRENT_SOURCE_DIR}/init
-    "/etc/init.d"
-    vm-overlay
+AddFileToOverlayDir( 
+    "init" 
+    ${CMAKE_CURRENT_SOURCE_DIR}/init 
+    "/etc/init.d" 
+    vm-overlay 
 )
 
 # Generate overlayed rootfs
 AddOverlayDirToRootfs(
-    vm-overlay
-    ${rootfs_file}
-    "buildroot"
-    "rootfs_install"
-    output_overlayed_rootfs_location
-    rootfs_target
-    GZIP
+    vm-overlay 
+    ${rootfs_file} 
+    "buildroot" 
+    "rootfs_install" 
+    output_overlayed_rootfs_location 
+    rootfs_target 
+    GZIP 
 )
 
 # Add the newly built rootfs
