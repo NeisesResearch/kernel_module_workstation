@@ -1,2 +1,3 @@
 #!/bin/sh
+# this doesn't actually work, and I'm not sure why
 insmod /lib/modules/4.9.275/kernel/drivers/vmm/hello.ko
